@@ -11,6 +11,8 @@ namespace NumberGuess_App
     {
       GetAppInfo();
 
+      GreetUser();
+
       while(true) {
         int guessNumber = 0;
 
@@ -78,5 +80,15 @@ namespace NumberGuess_App
       // Resetting color
       Console.ResetColor();
     }
+
+    static void GreetUser(){
+      // Ask user name
+      Console.WriteLine("What is your name ?");
+
+      string inputName = Console.ReadLine();
+
+      Console.WriteLine("Hello {0}, Welcome to the game....", inputName);
+    }
+
   }
 }
