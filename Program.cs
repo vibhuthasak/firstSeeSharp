@@ -10,7 +10,6 @@ namespace NumberGuess_App
     static void Main(string[] args)
     {
       GetAppInfo();
-
       GreetUser();
 
       while(true) {
@@ -26,30 +25,18 @@ namespace NumberGuess_App
 
           // Make sure it is a number
           if(!int.TryParse(input, out guessNumber)){
-            Console.ForegroundColor = ConsoleColor.Red;
-            // Tell user NAN
-            Console.WriteLine("{0} is not a number", input);
-            // Resetting color
-            Console.ResetColor();
+            PrintColorMessage(ConsoleColor.Red, "Please enter valid Number");
             continue;
           }
 
           guessNumber = Int32.Parse(input);
 
           if(guessNumber != correctNumber) {
-            Console.ForegroundColor = ConsoleColor.Red;
-            // Tell user incorrect
-            Console.WriteLine("{0} is not the correct Number. Try again....", guessNumber);
-            // Resetting color
-            Console.ResetColor();
+            PrintColorMessage(ConsoleColor.DarkRed, "Incorrect Number. Try Again...");
           }
         }
 
-        Console.ForegroundColor = ConsoleColor.Blue;
-        // Tell user Correct
-        Console.WriteLine("{0} is the CORRECT Number..", guessNumber);
-        // Resetting color
-        Console.ResetColor();
+        PrintColorMessage(ConsoleColor.Yellow, "CORRECT");
 
         // Ask to play again
         Console.WriteLine("Play Again ? [Y or N]");
@@ -90,5 +77,14 @@ namespace NumberGuess_App
       Console.WriteLine("Hello {0}, Welcome to the game....", inputName);
     }
 
+    static void PrintColorMessage(ConsoleColor color, string message) {
+      Console.ForegroundColor = color;
+
+      // Writing out app info
+      Console.WriteLine(message);
+
+      // Resetting color
+      Console.ResetColor();
+    }
   }
 }
